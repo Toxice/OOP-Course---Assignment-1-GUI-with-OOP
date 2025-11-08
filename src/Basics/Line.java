@@ -6,6 +6,11 @@ public class Line {
     private final double slope;
     private final double B;
 
+    /**
+     * Take two Point Objects and create a Line from them
+     * @param start: Point
+     * @param end: Point
+     */
     public Line(Point start, Point end) {
         this.start = start;
         this.end = end;
@@ -13,6 +18,13 @@ public class Line {
         this.B = calB();
     }
 
+    /**
+     * Take Four Coordinates and make two Points and Make a Line from them
+     * @param x1: coordinate
+     * @param y1: coordinate
+     * @param x2: coordinate
+     * @param y2: coordinate
+     */
     public Line(double x1, double y1, double x2, double y2) {
         this.start = new Point(x1, y1);
         this.end = new Point(x2, y2);
