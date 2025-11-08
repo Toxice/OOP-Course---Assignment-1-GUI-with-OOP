@@ -32,10 +32,18 @@ public class Line {
         this.B = calB();
     }
 
+    /**
+     * Calculate the Length of the Line
+     * @return the length of the line, made of the distance between two Points
+     */
     public double length() {
         return this.start.distance(this.end);
     }
 
+    /**
+     * Find The Middle Point of the Line
+     * @return the middle Point, takes the average of two Points
+     */
     public Point middle() {
         return new Point((start.getX() + end.getX()) / 2, (start.getY() + end.getY()) / 2);
     }
