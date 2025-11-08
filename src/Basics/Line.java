@@ -76,8 +76,22 @@ public class Line {
         }
     }
 
-    public Point IntersectionWith() {
-        return new Point(5,3);
+    /**
+     * Calculate the Intersection Point between the two Lines
+     * Calculate the Point, and Check if it's the parameter of the two lines
+     * return if the point if so, return null otherwise
+     * @return Point Object, may be null
+     */
+    public Point IntersectionWith(Line other) {
+        if (this.getSlope() != other.getSlope()) {
+            double _x = (this.getIntercept() - other.getIntercept() / (this.getSlope() - other.getSlope()));
+            double _y = this.getSlope() * _x + this.getIntercept();
+            Point intersectionPoint = new Point(_x, _y);
+
+            if (this.contains(intersectionPoint) && other.contains(intersectionPoint)) {
+                return intersectionPoint;
+            } else return null;
+        }
     }
 
 
@@ -126,9 +140,9 @@ public class Line {
     /**
      * Check's if a Point is contained in this Line
      * @param point: Point object
-     * @return true iff start and end contains point
+     * @return true iff Line contains the Point
      */
     private boolean contains(Point point) {
-//        return this.getStart().contains(point) && this.getEnd().contains(point);
+        return getStart().biggerThan(point) && getEnd().smallerThan(point);
     }
 }

@@ -30,6 +30,24 @@ public class Point {
         return (this.x == other.x) && (this.y == other.y);
     }
 
+    /**
+     * Checks if the point is smaller than this Point
+     * @param point: Point Object
+     * @return true if the x and y values of the point is smaller of this point
+     */
+    public boolean smallerThan(Point point) {
+        return point.getX() <= this.getX() && point.getY() <= this.getY();
+    }
+
+    /**
+     * Checks if the point is bigger than this Point
+     * @param point: Point Object
+     * @return true if the x and y values of the point is bigger of this point
+     */
+    public boolean biggerThan(Point point) {
+        return point.getX() >= this.getX() && point.getY() >= this.getY();
+    }
+
     public double getX() {
         return this.x;
     }
