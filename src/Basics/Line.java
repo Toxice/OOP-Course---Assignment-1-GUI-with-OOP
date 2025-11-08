@@ -1,10 +1,17 @@
 package Basics;
 
+/**
+ * Line Object, made of two Point Objects
+ * start - start Point
+ * end - end Point
+ * slope - the slope of the line
+ * intercept - the b point of the line (y = mx + b)
+ */
 public class Line {
     Point start;
     Point end;
     private final double slope;
-    private final double B;
+    private final double intercept;
 
     /**
      * Take two Point Objects and create a Line from them
@@ -15,7 +22,7 @@ public class Line {
         this.start = start;
         this.end = end;
         this.slope = (this.end.getY() - this.start.getY()) / (this.end.getX() - this.start.getX());
-        this.B = calB();
+        this.intercept = calIntercept();
     }
 
     /**
@@ -29,7 +36,7 @@ public class Line {
         this.start = new Point(x1, y1);
         this.end = new Point(x2, y2);
         this.slope = (y2 - y1 / (x2 - x1));
-        this.B = calB();
+        this.intercept = calIntercept();
     }
 
     /**
@@ -56,9 +63,17 @@ public class Line {
         return this.end;
     }
 
-
+    /**
+     * Meant to Check if This Line intersects if any other lines
+     * @param other: Line Object
+     * @return true iff This intersects with other Line, false otherwise
+     */
     public boolean isIntersecting(Line other) {
-        return true;
+        if (this.getSlope() == other.getSlope()) {
+            return false;
+        } else {
+
+        }
     }
 
     public Point IntersectionWith() {
@@ -77,11 +92,11 @@ public class Line {
         return slope;
     }
 
-    private double getB() {
-        return this.B;
+    private double getIntercept() {
+        return this.intercept;
     }
 
-    private double calB() {
+    private double calIntercept() {
         return this.getEnd().getY() - getSlope() * this.getEnd().getX();
     }
 
@@ -102,7 +117,7 @@ public class Line {
      * in this Line's Points
      */
     private boolean contains(Line other) {
-        if ((this.getSlope() == other.getSlope()) && (this.getB() == other.getB())) {
+        if ((this.getSlope() == other.getSlope()) && (this.getIntercept() == other.getIntercept())) {
             // if both lines have the same slope and same b point
             return isLineContained(other);
         } return false;
