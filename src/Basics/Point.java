@@ -1,7 +1,5 @@
 package Basics;
 
-import java.util.Objects;
-import java.util.Set;
 
 // a point has an x and a y value, and can measure the distance to other points, and if it is equal to another point.
 public class Point {
@@ -24,38 +22,11 @@ public class Point {
         return Math.sqrt(determinant);
     }
 
-    /**
-     * comparing between the current point and some other point
-     * @param other: Point Object
-     * @return true iff x and y values of the two points are equal
-     */
-    public boolean equals(Point other) {
-        return (this.x == other.x) && (this.y == other.y);
-    }
-
     public double getX() {
         return this.x;
     }
 
     public double getY() {
         return this.y;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Point other)) return false;
-        return Double.compare(this.x, other.x) == 0 &&
-                Double.compare(this.y, other.y) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-
-    @Override
-    public String toString() {
-        return "(" + x + "," + y + ")";
     }
 }
