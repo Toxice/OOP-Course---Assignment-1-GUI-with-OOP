@@ -21,7 +21,7 @@ public class Line {
     }
 
     public double length() {
-        return this.start.distanceFrom(this.end);
+        return this.start.distance(this.end);
     }
 
     public Point middle() {
@@ -68,7 +68,7 @@ public class Line {
      * @return true iff the Points of the other Line is contained in the Points of this Line
      */
     private boolean isLineContained(Line other) {
-        return this.getStart().contains(other.getStart()) && this.getEnd().contains(other.getEnd());
+//        return this.getStart().contains(other.getStart()) && this.getEnd().contains(other.getEnd());
     }
 
     /**
@@ -82,5 +82,19 @@ public class Line {
             // if both lines have the same slope and same b point
             return isLineContained(other);
         } return false;
+    }
+
+    /**
+     * Check's if a Point is contained in this Line
+     * @param point: Point object
+     * @return true iff start and end contains point
+     */
+    private boolean contains(Point point) {
+//        return this.getStart().contains(point) && this.getEnd().contains(point);
+    }
+
+    private Point getIntersectionPoint(Line other) {
+        // not implement yet
+        return new Point(5,4);
     }
 }
