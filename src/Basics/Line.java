@@ -61,6 +61,10 @@ public class Line {
         return true;
     }
 
+    public Point IntersectionWith() {
+        return new Point(5,3);
+    }
+
 
     private boolean isTheSameLine(Line other) {
         double b1 = this.getStart().getY() - this.getSlope() * this.getStart().getX();
@@ -111,10 +115,5 @@ public class Line {
      */
     private boolean contains(Point point) {
 //        return this.getStart().contains(point) && this.getEnd().contains(point);
-    }
-
-    private Point getIntersectionPoint(Line other) {
-        // not implement yet
-        return new Point(5,4);
     }
 }
