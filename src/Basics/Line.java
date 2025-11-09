@@ -84,9 +84,9 @@ public class Line {
      */
     public Point intersectionWith(Line other) {
         if (this.getSlope() != other.getSlope()) {
-            double _x = ((other.getIntercept() - this.getIntercept()) / (this.getSlope() - other.getSlope())); // get X Value
-            double _y = this.getSlope() * _x + this.getIntercept(); // get Y Value
-            Point intersectionPoint = new Point(_x, _y); // get Full Point
+            double _x = ((other.getIntercept() - this.getIntercept()) / (this.getSlope() - other.getSlope()));
+            double _y = this.getSlope() * _x + this.getIntercept();
+            Point intersectionPoint = new Point(_x, _y);
 
             if (this.contains(intersectionPoint) && other.contains(intersectionPoint)) {
                 return intersectionPoint;
