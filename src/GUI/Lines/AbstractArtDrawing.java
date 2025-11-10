@@ -50,6 +50,7 @@ public class AbstractArtDrawing {
     public static void drawLines(ArrayList<Line> lines, DrawSurface drawSurface) {
         drawSurface.setColor(Color.BLACK);
         for (Line line : lines) {
+            System.out.println();
             drawSurface.drawLine((int)Math.round(line.getStart().getX()), (int)Math.round(line.getStart().getY()), (int)Math.round(line.getEnd().getX())
                     ,(int)Math.round(line.getEnd().getY()));
         }
@@ -64,6 +65,9 @@ public class AbstractArtDrawing {
     public static void drawIntersectionPoints(ArrayList<Point> intersectionPoints, DrawSurface drawSurface) {
         drawSurface.setColor(Color.RED);
         for (Point intersectionPoint : intersectionPoints) {
+            int ix = (int)intersectionPoint.getX();
+            int iy = (int)intersectionPoint.getY();
+            System.out.println("Draw Point at: (" + ix + "," + iy + ")");
             drawSurface.fillCircle((int)Math.round(intersectionPoint.getX()), (int)Math.round(intersectionPoint.getY()), 3);
         }
     }
@@ -103,15 +107,36 @@ public class AbstractArtDrawing {
     public static ArrayList<Point> getIntersectionPoints(ArrayList<Line> lines) {
         ArrayList<Point> intersectionPoints = new ArrayList<>();
         for (int i = 0; i < lines.size(); ++i) {
-            for (int j = 0; j < lines.size(); ++j) {
-                if (i == j) continue;
-                if (isIntersects(lines.get(i), lines.get(j))) {
-                    intersectionPoints.add(getIntersectionPoint(lines.get(i), lines.get(j)));
+            for (int j = i + 1; j < lines.size(); ++j) {
+               Line lineI = lines.get(i);
+               Line lineJ = lines.get(j);
+               if (isIntersects(lineI, lineJ)) {
+                   Point intersectionPoint = getIntersectionPoint(lineI, lineJ);
+                   if (intersectionPoint != null) {
+                       intersectionPoints.add(intersectionPoint);
+                   }
                 }
             }
         }
         return intersectionPoints;
     }
+    /*
+    for (int i = 0; i < lines.size(); ++i) {
+    for (int j = i + 1; j < lines.size(); ++j) {   // <--- only check each unordered pair once
+        Line a = lines.get(i);
+        Line b = lines.get(j);
+        if (isIntersects(a, b)) {
+            Point p = getIntersectionPoint(a, b);
+            if (p != null) {
+                // optionally avoid adding duplicates:
+                if (!intersectionPoints.contains(p)) {
+                    intersectionPoints.add(p);
+                }
+            }
+        }
+    }
+}
+     */
 
 }
 

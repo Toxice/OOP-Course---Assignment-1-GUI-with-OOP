@@ -13,6 +13,8 @@ public class Line {
     private final double slope;
     private final double intercept;
 
+    private static final double EPS = 1e-9; // same EPS as Point
+
     /**
      * Take two Point Objects and create a Line from them
      * @param start: Point
@@ -112,14 +114,22 @@ public class Line {
      * @return true iff the Point lies between the Line Perimeter and Matches the Line Equation
      */
     public boolean contains(Point point) {
-        if (point.getY() == this.getSlope() * point.getX() + this.getIntercept()) {
-            boolean X_Min = point.getX() >= Math.min(this.getStart().getX(), this.getEnd().getX());
-            boolean X_Max = point.getX() <= Math.max(this.getStart().getX(), this.getEnd().getX());
-            boolean Y_Min = point.getY() >= Math.min(this.getStart().getY(), this.getEnd().getY());
-            boolean Y_Max = point.getY() <= Math.max(this.getStart().getY(), this.getEnd().getY());
+        if (point == null) return false;
+        // For vertical lines: x coordinate equality within EPS
+        if (Math.abs(this.getStart().getX() - this.getEnd().getX()) < EPS) {
+            if (Math.abs(point.getX() - this.getStart().getX()) > EPS) return false;
+        } else {
+            double expectedY = this.getSlope() * point.getX() + this.getIntercept();
+            if (Math.abs(point.getY() - expectedY) > EPS) return false;
+        }
+        // Now check if within bounding box (with EPS)
+        double minX = Math.min(this.getStart().getX(), this.getEnd().getX()) - EPS;
+        double maxX = Math.max(this.getStart().getX(), this.getEnd().getX()) + EPS;
+        double minY = Math.min(this.getStart().getY(), this.getEnd().getY()) - EPS;
+        double maxY = Math.max(this.getStart().getY(), this.getEnd().getY()) + EPS;
 
-            return X_Min && X_Max && Y_Min && Y_Max;
-        } return false;
+        return point.getX() >= minX && point.getX() <= maxX
+                && point.getY() >= minY && point.getY() <= maxY;
     }
 
     @Override

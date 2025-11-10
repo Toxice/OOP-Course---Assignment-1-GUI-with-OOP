@@ -32,10 +32,23 @@ public class Point {
         return this.y;
     }
 
-    public boolean equals(Point other) {
-     if ((this.getX() - other.getX()) < EPS && (this.getY() - other.getY()) < EPS) {
-         return true;
-     } else return false;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+        Point other = (Point) obj;
+        return Math.abs(this.getX() - other.getX()) < EPS
+                && Math.abs(this.getY() - other.getY()) < EPS;
+    }
+
+    @Override
+    public int hashCode() {
+        // Use rounded values so hashCode aligns with EPS-tolerant equals
+        long xBits = Double.doubleToLongBits(Math.round(this.getX() / EPS) * EPS);
+        long yBits = Double.doubleToLongBits(Math.round(this.getY() / EPS) * EPS);
+        int result = (int)(xBits ^ (xBits >>> 32));
+        result = 31 * result + (int)(yBits ^ (yBits >>> 32));
+        return result;
     }
 
     @Override
