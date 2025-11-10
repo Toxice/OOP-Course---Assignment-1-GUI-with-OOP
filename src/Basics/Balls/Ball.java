@@ -1,5 +1,6 @@
-package Basics;
+package Basics.Balls;
 
+import Basics.LinesAndPoints.Point;
 import biuoop.DrawSurface;
 
 import java.awt.*;
@@ -13,6 +14,10 @@ public class Ball {
     Point Center;
     int Radius;
     Color color;
+    Velocity velocity;
+
+    static final int Width = 200;
+    static final int Height = 200;
 
     public Ball(Point point, int r, Color color) {
         this.Center = point;
@@ -38,6 +43,30 @@ public class Ball {
 
     public Color getColor() {
         return this.color;
+    }
+
+    public void setVelocity(Velocity velocity) {
+        this.velocity = velocity;
+    }
+
+    public void setVelocity(double dx, double dy) {
+        this.velocity = new Velocity(dx, dy);
+    }
+
+    public Velocity getVelocity() {
+        return this.velocity;
+    }
+
+    public void moveOneStep() {
+        if (this.Center.getX() >= Width) {
+            this.Center.setX(-(this.Center.getX()));
+            return;
+        }
+        if (this.Center.getY() >= Height) {
+            this.Center.setY(-(this.Center.getY()));
+            return;
+        }
+        this.Center = this.getVelocity().applyToPoint(this.Center);
     }
 
     public void drawOn(DrawSurface drawSurface) {

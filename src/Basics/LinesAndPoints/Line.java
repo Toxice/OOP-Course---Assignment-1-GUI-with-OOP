@@ -1,4 +1,4 @@
-package Basics;
+package Basics.LinesAndPoints;
 
 /**
  * Line Object, made of two Point Objects

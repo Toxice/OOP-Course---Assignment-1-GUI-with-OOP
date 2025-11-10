@@ -1,7 +1,7 @@
 package Tests;
 
-import Basics.Line;
-import Basics.Point;
+import Basics.LinesAndPoints.Line;
+import Basics.LinesAndPoints.Point;
 
 /**
  * This class does some simple testing of the Point and Line classes.

@@ -1,7 +1,7 @@
 package GUI.Lines;
 
-import Basics.Line;
-import Basics.Point;
+import Basics.LinesAndPoints.Line;
+import Basics.LinesAndPoints.Point;
 import biuoop.DrawSurface;
 import biuoop.GUI;
 
