@@ -3,6 +3,7 @@ package Basics.Balls;
 import Basics.LinesAndPoints.Point;
 import biuoop.DrawSurface;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Ball Object, made of a Point representing its center,
@@ -87,6 +88,15 @@ public class Ball {
     public void drawOn(DrawSurface drawSurface) {
         drawSurface.setColor(this.getColor());
         drawSurface.fillCircle(this.getX(), this.getY(), this.getSize());
+    }
+
+    public static Color pickRandomColor(int number) {
+        Color[] colors = {
+                Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW,
+                Color.ORANGE, Color.PINK, Color.CYAN, Color.MAGENTA
+        };
+        Random rand = new Random();
+        return colors[rand.nextInt(colors.length)];
     }
 
     @Override
