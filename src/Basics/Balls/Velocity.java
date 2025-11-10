@@ -14,6 +14,22 @@ public class Velocity {
         this.dy = dy;
     }
 
+    public double getDx() {
+        return this.dx;
+    }
+
+    public double getDy() {
+        return this.dy;
+    }
+
+    public void setDx(double _dx) {
+        this.dx = _dx;
+    }
+
+    public void setDy(double _dy) {
+        this.dy = _dy;
+    }
+
     /**
      * Creates a new Point from This Point
      * @param point: Point Object
@@ -21,6 +37,11 @@ public class Velocity {
      */
     public Point applyToPoint(Point point) {
         return new Point(point.getX() + this.dx, point.getY() + this.dy);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + this.dx + "," + this.dy + ")";
     }
 
 

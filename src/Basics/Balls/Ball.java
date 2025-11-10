@@ -2,7 +2,6 @@ package Basics.Balls;
 
 import Basics.LinesAndPoints.Point;
 import biuoop.DrawSurface;
-
 import java.awt.*;
 
 /**
@@ -45,10 +44,6 @@ public class Ball {
         return this.color;
     }
 
-    public void setVelocity(Velocity velocity) {
-        this.velocity = velocity;
-    }
-
     public void setVelocity(double dx, double dy) {
         this.velocity = new Velocity(dx, dy);
     }
@@ -58,19 +53,30 @@ public class Ball {
     }
 
     public void moveOneStep() {
+        this.Center = this.getVelocity().applyToPoint(this.Center);
+
         if (this.Center.getX() >= Width) {
-            this.Center.setX(-(this.Center.getX()));
+            this.velocity.setDx(-(this.velocity.getDx()));
             return;
         }
         if (this.Center.getY() >= Height) {
-            this.Center.setY(-(this.Center.getY()));
-            return;
+            this.velocity.setDy(-(this.velocity.getDy()));
         }
-        this.Center = this.getVelocity().applyToPoint(this.Center);
+        if (this.Center.getX() <= -Width) {
+            this.velocity.setDx(-(this.velocity.getDx()));
+        }
+        if (this.Center.getY() <= -Height) {
+            this.velocity.setDy(-(this.velocity.getDy()));
+        }
     }
 
     public void drawOn(DrawSurface drawSurface) {
         drawSurface.setColor(this.getColor());
         drawSurface.fillCircle(this.getX(), this.getY(), this.getSize());
+    }
+
+    @Override
+    public String toString() {
+        return "("+ this.getX() + "," + this.getY() + ")";
     }
 }
