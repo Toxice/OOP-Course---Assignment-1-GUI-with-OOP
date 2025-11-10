@@ -39,6 +39,18 @@ public class Velocity {
         return new Point(point.getX() + this.dx, point.getY() + this.dy);
     }
 
+    /**
+     * Creates a new Velocity using Angle and Speed (Vector)
+     * @param angle: angle
+     * @param speed: speed
+     * @return a new Velocity
+     */
+    public static Velocity fromAngleAndSpeed(double angle, double speed) {
+        double dx = speed * Math.cos(Math.toDegrees(angle));
+        double dy = speed * Math.sin(Math.toRadians(angle));
+        return new Velocity(dx, dy);
+    }
+
     @Override
     public String toString() {
         return "(" + this.dx + "," + this.dy + ")";
