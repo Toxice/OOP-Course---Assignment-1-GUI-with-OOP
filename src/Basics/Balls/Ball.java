@@ -29,6 +29,11 @@ public class Ball {
         this(new Point(_x, _y), radius, color);
     }
 
+    public Ball(int Radius, Random random) {
+        this(new Point(random.nextInt(10), random.nextInt(10)), Radius,
+                pickRandomColor());
+    }
+
     public int getX() {
         return (int)Math.round(this.Center.getX());
     }
@@ -90,7 +95,7 @@ public class Ball {
         drawSurface.fillCircle(this.getX(), this.getY(), this.getSize());
     }
 
-    public static Color pickRandomColor(int number) {
+    public static Color pickRandomColor() {
         Color[] colors = {
                 Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW,
                 Color.ORANGE, Color.PINK, Color.CYAN, Color.MAGENTA

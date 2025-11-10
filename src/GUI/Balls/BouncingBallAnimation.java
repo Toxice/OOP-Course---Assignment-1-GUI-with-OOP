@@ -1,6 +1,7 @@
 package GUI.Balls;
 
 import Basics.Balls.Ball;
+import Basics.Balls.Velocity;
 import Basics.LinesAndPoints.Point;
 import biuoop.DrawSurface;
 import biuoop.GUI;
@@ -12,11 +13,9 @@ public class BouncingBallAnimation {
     final static int Width = 200;
     final static int Height = 200;
     static void main(String[] args) {
-        int xPoint = Integer.parseInt(args[0]);
-        int yPoint = Integer.parseInt(args[1]);
-        int dx = Integer.parseInt(args[2]);
-        int dy = Integer.parseInt(args[3]);
-        drawAnimation(new Point(xPoint,yPoint), dx, dy);
+        Point argPoint = new Point(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+        Velocity argVelocity = new Velocity(Integer.parseInt(args[2]), Integer.parseInt(args[3]));
+        drawAnimation(argPoint, argVelocity.getDx(), argVelocity.getDy());
     }
 
     static private void drawAnimation(Point start, double dx, double dy) {
