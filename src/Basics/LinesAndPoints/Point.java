@@ -1,5 +1,9 @@
 package Basics.LinesAndPoints;
 
+import biuoop.DrawSurface;
+
+import java.awt.*;
+
 /**
  * Point Object, made of two doubles: x value and a y value
  */
@@ -33,14 +37,6 @@ public class Point {
         return this.y;
     }
 
-    public void setX(double x) {
-        this.x = x;
-    }
-
-    public void setY(double y) {
-        this.y = y;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -58,6 +54,18 @@ public class Point {
         int result = (int)(xBits ^ (xBits >>> 32));
         result = 31 * result + (int)(yBits ^ (yBits >>> 32));
         return result;
+    }
+
+    /**
+     * Draws a Point to the DrawSurface by its state (Intersection Point or a Middle Point)
+     * @param drawSurface: DrawSurface Object
+     * @param isIntersect: boolean - if true: draw the point as an intersection, else - draw as a middle point
+     */
+    public void drawPoint(DrawSurface drawSurface, boolean isIntersect) {
+        if (isIntersect) {
+            drawSurface.setColor(Color.RED);
+        } else drawSurface.setColor(Color.BLUE);
+        drawSurface.fillCircle((int)Math.round(this.getX()), (int)Math.round(this.getY()), 3);
     }
 
     @Override
