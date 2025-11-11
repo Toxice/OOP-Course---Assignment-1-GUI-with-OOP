@@ -9,7 +9,7 @@ import biuoop.Sleeper;
 import biuoop.*;
 
 public class BouncingBallAnimation {
-    final static String Title = "Part 3 - Bouncing Balls";
+    final static String Title = "Part 3.2 - Bouncing Balls";
     final static int Width = 800;
     final static int Height = 600;
     static void main(String[] args) {

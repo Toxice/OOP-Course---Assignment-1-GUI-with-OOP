@@ -34,18 +34,18 @@ public class AbstractArtDrawing {
         gui.show(drawSurface);
     }
 
-    /**
-     * Creates a Line from x,y coordinates
-     *
-     * @param x1: coordinate
-     * @param y1: coordinate
-     * @param x2: coordinate
-     * @param y2: coordinate
-     * @return a new Line
-     */
-    public static Line createLine(double x1, double y1, double x2, double y2) {
-        return new Line(x1, y1, x2, y2);
-    }
+//    /**
+//     * Creates a Line from x,y coordinates
+//     *
+//     * @param x1: coordinate
+//     * @param y1: coordinate
+//     * @param x2: coordinate
+//     * @param y2: coordinate
+//     * @return a new Line
+//     */
+//    public static Line createLine(double x1, double y1, double x2, double y2) {
+//        return new Line(x1, y1, x2, y2);
+//    }
 
     /**
      * Draws Lines to the DrawSurface
@@ -92,7 +92,7 @@ public class AbstractArtDrawing {
     public static ArrayList<Line> setLines() {
         ArrayList<Line> lines = new ArrayList<>();
         for (int i = 0; i < 10; ++i) {
-                lines.add(createLine(random.nextInt(width / 2) + 1, random.nextInt(height / 2) + 1,
+                lines.add(Line.createLine(random.nextInt(width / 2) + 1, random.nextInt(height / 2) + 1,
                         random.nextInt(width / 2) + 1, random.nextInt(height / 2) + 1));
         }
         return lines;

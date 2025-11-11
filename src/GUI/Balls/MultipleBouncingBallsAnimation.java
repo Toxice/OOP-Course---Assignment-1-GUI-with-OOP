@@ -13,7 +13,7 @@ public class MultipleBouncingBallsAnimation {
     // Keep these equal to Ball's Width/Height (Ball currently uses 200x200).
     static final int Width = 800;
     static final int Height = 600;
-    static final String Title = "Part 3 - Multiple Balls";
+    static final String Title = "Part 3.3 - Multiple Balls";
 
     static void main(String[] args) {
         if (args.length == 0) {

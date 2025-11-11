@@ -16,7 +16,7 @@ public class MultipleFramesBouncingBallsAnimation {
     // Window size (match your other animations)
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
-    static final String TITLE = "Multiple Frames - Bouncing Balls";
+    static final String TITLE = "Part 3.4 - Bouncing Balls, Multiple Frames";
 
     // Frames definitions
     static final int GREY_X = 50;

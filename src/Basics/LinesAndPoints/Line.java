@@ -132,6 +132,19 @@ public class Line {
                 && point.getY() >= minY && point.getY() <= maxY;
     }
 
+    /**
+     * Creates a Line from x,y coordinates
+     *
+     * @param x1: coordinate
+     * @param y1: coordinate
+     * @param x2: coordinate
+     * @param y2: coordinate
+     * @return a new Line
+     */
+    public static Line createLine(double x1, double y1, double x2, double y2) {
+        return new Line(x1, y1, x2, y2);
+    }
+
     @Override
     public String toString() {
         return "(" +  this.getStart().toString() + "," + this.getEnd().toString() + ")";
