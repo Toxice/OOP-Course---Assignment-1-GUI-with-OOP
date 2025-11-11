@@ -10,9 +10,11 @@ import java.util.Random;
 
 /**
  * Class Made for Plotting Lines and Points
+ * Description:
+ * Creates random Lines, and prints them, their middle points and their intersections points to the screen
  */
 public class AbstractArtDrawing {
-    static final String Title = "Assignment Part 2 - Lines and Points";
+    static final String Title = "Assignment 1: Part 2 - Lines and Points";
     static final Random random = new Random();
     static final int width = 800;
     static final int height = 600;
@@ -23,19 +25,19 @@ public class AbstractArtDrawing {
         DrawSurface drawSurface = gui.getDrawSurface();
         ArrayList<Line> lines = new ArrayList<>();
         ArrayList<Point> middlePoints = new ArrayList<>();
-        // Create Random Lines and Print them and their middle points to the DrawSurface
+        // Create Random Lines and draw them and their middle points to the DrawSurface
         for (int i = 0; i < number_of_lines; i++) {
             lines.add(new Line(random));
-            lines.get(i).drawLine(drawSurface);
+            lines.get(i).drawOn(drawSurface);
             middlePoints.add(lines.get(i).middle());
-            middlePoints.get(i).drawPoint(drawSurface, false);
+            middlePoints.get(i).drawOn(drawSurface, false);
         }
         // Find All Intersections and draw them to the DrawSurface
         for (int i = 0; i < number_of_lines; i++) {
             for (int j = i + 1; j < number_of_lines; j++) {
                 Point intersection = lines.get(i).intersectionWith(lines.get(j));
                 if (intersection != null) {
-                    intersection.drawPoint(drawSurface, true);
+                    intersection.drawOn(drawSurface, true);
                 }
             }
         }

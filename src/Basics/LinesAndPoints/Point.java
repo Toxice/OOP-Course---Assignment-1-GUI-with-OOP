@@ -51,8 +51,8 @@ public class Point {
         // Use rounded values so hashCode aligns with EPS-tolerant equals
         long xBits = Double.doubleToLongBits(Math.round(this.getX() / EPS) * EPS);
         long yBits = Double.doubleToLongBits(Math.round(this.getY() / EPS) * EPS);
-        int result = (int)(xBits ^ (xBits >>> 32));
-        result = 31 * result + (int)(yBits ^ (yBits >>> 32));
+        int result = Long.hashCode(xBits);
+        result = 31 * result + Long.hashCode(yBits);
         return result;
     }
 
@@ -61,7 +61,7 @@ public class Point {
      * @param drawSurface: DrawSurface Object
      * @param isIntersect: boolean - if true: draw the point as an intersection, else - draw as a middle point
      */
-    public void drawPoint(DrawSurface drawSurface, boolean isIntersect) {
+    public void drawOn(DrawSurface drawSurface, boolean isIntersect) {
         if (isIntersect) {
             drawSurface.setColor(Color.RED);
         } else drawSurface.setColor(Color.BLUE);

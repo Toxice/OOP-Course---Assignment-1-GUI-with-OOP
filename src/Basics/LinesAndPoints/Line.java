@@ -154,7 +154,7 @@ public class Line {
      * Draws this Line to the DrawSurface
      * @param drawSurface: DrawSurface Object
      */
-    public void drawLine(DrawSurface drawSurface) {
+    public void drawOn(DrawSurface drawSurface) {
         drawSurface.setColor(Color.BLACK);
         drawSurface.drawLine((int)Math.round(this.getStart().getX()), (int)Math.round(this.getStart().getY())
                 , (int)Math.round(this.getEnd().getX()), (int)Math.round(this.getEnd().getY()));
